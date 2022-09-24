@@ -1,10 +1,7 @@
-package com.amefastforward.cardapi.model;
+package com.amefastforward.cardapi.controller.request;
 
-import java.time.LocalDateTime;
+public class CreateCardRequest {
 
-public class Card {
-
-    private int id;
     private String name;
     private String description;
     private int strength;
@@ -13,14 +10,11 @@ public class Card {
     private int gear;
     private int intellect;
     private String imageUrl;
-    private LocalDateTime createdAt;
-    private LocalDateTime UpdatedAt;
 
     @Override
     public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "CreateCardRequest{" +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", strength=" + strength +
                 ", speed=" + speed +
@@ -28,17 +22,7 @@ public class Card {
                 ", gear=" + gear +
                 ", intellect=" + intellect +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", createdAt=" + createdAt +
-                ", UpdatedAt=" + UpdatedAt +
                 '}';
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -103,21 +87,5 @@ public class Card {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return UpdatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        UpdatedAt = updatedAt;
     }
 }

@@ -1,5 +1,6 @@
 package com.amefastforward.cardapi.controller;
 
+import com.amefastforward.cardapi.controller.request.CreateCardRequest;
 import com.amefastforward.cardapi.model.Card;
 import com.amefastforward.cardapi.service.CardService;
 import org.slf4j.Logger;
@@ -38,5 +39,10 @@ public class CardController {
                 return card.get();
             }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card não encontrado");
+    }
+
+    @PostMapping
+    public Card createCard(@RequestBody CreateCardRequest createCardRequest) {
+        return cardService.createCard(createCardRequest);
     }
 }
