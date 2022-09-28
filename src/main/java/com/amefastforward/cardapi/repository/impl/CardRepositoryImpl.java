@@ -40,14 +40,19 @@ public class CardRepositoryImpl implements CardRepository {
 
     @Override
     public Card save(Card card) {
-        var cardFoud = cards.stream().filter(cardInList -> cardInList.getName().equalsIgnoreCase(card.getName())).findFirst();
+        var cardFound = cards.stream().filter(cardInList -> cardInList.getName().equalsIgnoreCase(card.getName())).findFirst();
 
-        if(cardFoud.isPresent()){
+        if(cardFound.isPresent()){
             throw new InvalidEntityException("Nome [ " + card.getName() +" ] já existente!");
         }
         card.setId(cards.size() + 1);
         cards.add(card);
         return card;
+    }
+
+    @Override
+    public List<Card> findAll() {
+        return cards.stream().toList();
     }
 
 

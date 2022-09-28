@@ -2,6 +2,7 @@ package com.amefastforward.cardapi.controller;
 
 import com.amefastforward.cardapi.controller.request.CreateCardRequest;
 import com.amefastforward.cardapi.model.Card;
+import com.amefastforward.cardapi.model.Origin;
 import com.amefastforward.cardapi.service.CardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -41,8 +43,15 @@ public class CardController {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card não encontrado");
     }
 
+    @GetMapping("/all")
+    public List<Card> findAll(){
+        LOG.info("Iniciando a busca de todos os Cards");
+        return cardService.findAll();
+    }
+
     @PostMapping
     public Card createCard(@RequestBody CreateCardRequest createCardRequest) {
+        LOG.info("Iniciando criação de Card com nome [{}]", createCardRequest.getName());
         return cardService.createCard(createCardRequest);
     }
 }
